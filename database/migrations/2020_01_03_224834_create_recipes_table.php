@@ -18,10 +18,14 @@ class CreateRecipesTable extends Migration
             $table->string('name');
             $table->integer('prep_time');
             $table->text('description');
+            $table->string('image');
+            $table->enum('difficulty', ['hard', 'medium', 'piece of cake']);
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
 
         });
     }

@@ -17,6 +17,7 @@ class CreateRecipeIngredientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('ingredient');
             $table->integer('amount');
+            $table->enum('unit', ['handful', 'ml', 'g', 'tbsp']);
             $table->unsignedBigInteger('recipes_id');
             $table->timestamps();
 
