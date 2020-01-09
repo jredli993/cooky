@@ -40,8 +40,7 @@
 
         <nav class="main-nav" role="navigation" id="menu">
             <ul>
-                <li class="{{ Route::is('home') ? 'current-menu-item' : '' }}"><a href="{{ route('home') }}" title="Home"><span>Home</span></a></li>
-{{--                <li {{ Route::is('home') ? 'current-menu-item' : '' }}><a href="recipes.html" title="Recipes"><span>Recipes</span></a></li>--}}
+                <li class="{{ Route::is('home') ? 'current-menu-item' : '' }}"><a href="{{ route('home') }}" title="Recipes"><span>Recipes</span></a></li>
 
                 @guest
                     <li class="{{ Route::is('login') ? 'current-menu-item' : '' }}"><a href="{{ route('login') }}"><span>{{ __('Login') }}</span></a></li>
@@ -55,7 +54,8 @@
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            <span>{{ __('Logout') }}</span>
+
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

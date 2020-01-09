@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.',  'middleware' => ['auth', 'admin']], function() {
+    // Admin Recipes
+    Route::resource('recipes', 'Admin\RecipeController', ['only' => ['index', 'destroy']]);
+    // Admin Categories
+    Route::resource('category', 'Admin\CategoryController');
+});
