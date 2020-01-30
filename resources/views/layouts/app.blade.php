@@ -40,8 +40,7 @@
 
         <nav class="main-nav" role="navigation" id="menu">
             <ul>
-                <li class="{{ Route::is('home') ? 'current-menu-item' : '' }}"><a href="{{ route('home') }}" title="Home"><span>Home</span></a></li>
-{{--                <li {{ Route::is('home') ? 'current-menu-item' : '' }}><a href="recipes.html" title="Recipes"><span>Recipes</span></a></li>--}}
+                <li class="{{ Route::is('home') ? 'current-menu-item' : '' }}"><a href="{{ route('home') }}" title="Recipes"><span>Recipes</span></a></li>
 
                 @guest
                     <li class="{{ Route::is('login') ? 'current-menu-item' : '' }}"><a href="{{ route('login') }}"><span>{{ __('Login') }}</span></a></li>
@@ -55,7 +54,8 @@
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            <span>{{ __('Logout') }}</span>
+
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -69,8 +69,10 @@
         <nav class="user-nav" role="navigation">
             <ul>
                 <li class="light"><a href="find_recipe.html" title="Search for recipes"><i class="icon icon-themeenergy_search"></i> <span>Search for recipes</span></a></li>
-                <li class="medium"><a href="my_profile.html" title="My account"><i class="icon icon-themeenergy_chef-hat"></i> <span>My account</span></a></li>
-                <li class="dark"><a href="submit_recipe.html" title="Submit a recipe"><i class="icon icon-themeenergy_fork-spoon"></i> <span>Submit a recipe</span></a></li>
+                @auth()
+                    <li class="medium"><a href="{{ route('profile') }}" title="My account"><i class="icon icon-themeenergy_chef-hat"></i> <span>My account</span></a></li>
+                @endauth
+                <li class="dark"><a href="{{ route('recipe.create') }}" title="Submit a recipe"><i class="icon icon-themeenergy_fork-spoon"></i> <span>Submit a recipe</span></a></li>
             </ul>
         </nav>
     </div>
