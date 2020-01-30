@@ -10,6 +10,30 @@
 
 		init: function () {
 
+		    $('.ingredient .remove').click(function (e) {
+                e.preventDefault();
+
+                $(this).parent('div').remove();
+            });
+
+		    $('.add-ingredient').click(function(e) {
+                e.preventDefault();
+
+                $('.ingredient:first').clone(true).insertBefore('.add-ingredients');
+            });
+
+            $('.instruction .remove').click(function (e) {
+                e.preventDefault();
+
+                $(this).parent('div').remove();
+            });
+
+		    $('.add-step').click(function (e) {
+                e.preventDefault();
+
+                $('.instruction:first').clone(true).insertBefore('.add-step');
+            });
+
             $('.btn-remove').click(function(e) {
                 e.preventDefault();
                 var id = $(this).data('id');

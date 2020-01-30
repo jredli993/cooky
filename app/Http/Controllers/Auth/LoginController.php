@@ -27,6 +27,7 @@ class LoginController extends Controller
      * @return string
      */
     public function redirectTo() {
+
         if(auth()->user()->role->name == 'admin') {
             return '/admin/recipes';
         }
